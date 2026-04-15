@@ -1,5 +1,8 @@
-local SOURCE_URL = "https://raw.githubusercontent.com/j0z4fx/glycerin-ui/refs/heads/main/src.luau"
-local Glycerin = assert(loadstring(game:HttpGet(SOURCE_URL), "@glycerin-src"))()
+local SOURCE_URL = ("https://raw.githubusercontent.com/j0z4fx/glycerin-ui/main/src.luau?cb=%d"):format(os.time())
+local source = game:HttpGet(SOURCE_URL)
+source = source:gsub("^\239\187\191", "")
+
+local Glycerin = assert(loadstring(source, "@glycerin-src"))()
 
 local ui = Glycerin.createWindow()
 ui.switchTab("Home")
